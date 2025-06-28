@@ -39,7 +39,7 @@ function AppContent() {
   const calmspaceRef = useRef(null);
   const welcomeRef = useRef(null);
   const progressRef = useRef(null);
-  const isProgressInView = useInView(progressRef, { amount: 0.3, once: false });
+const isProgressInView = useInView(progressRef, { amount: 0.3, once: false });
   const isWelcomeInView = useInView(welcomeRef, { amount: 0.6 });
   const isMindplayInView = useInView(mindplayRef, { amount: 0.3, once: false });
   const isCalmspaceInView = useInView(calmspaceRef, { amount: 0.3, once: false });
@@ -47,9 +47,8 @@ function AppContent() {
   const hash = location.hash;
   const isOnHomePage = location.pathname === '/';
   const showFloatingNav = isOnHomePage &&
-  !isWelcomeInView &&
-  (isMindplayInView || isCalmspaceInView || isProgressInView ||
-   hash === '#mindplay' || hash === '#calmspace-section' || hash === '#myprogress');
+    !isWelcomeInView &&
+    (isMindplayInView || isCalmspaceInView || hash === '#mindplay' || hash === '#calmspace-section' || hash === '#myprogress');
 
   return (
     <>

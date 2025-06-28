@@ -47,9 +47,8 @@ function AppContent() {
   const hash = location.hash;
   const isOnHomePage = location.pathname === '/';
   const showFloatingNav = isOnHomePage &&
-  !isWelcomeInView &&
-  (isMindplayInView || isCalmspaceInView || isProgressInView ||
-   hash === '#mindplay' || hash === '#calmspace-section' || hash === '#myprogress');
+    !isWelcomeInView &&
+    (isMindplayInView || isCalmspaceInView || hash === '#mindplay' || hash === '#calmspace-section' || hash === '#myprogress');
 
   return (
     <>
