@@ -1,7 +1,7 @@
 .progress-section {
   min-height: auto; /* Optional: remove full-height */
   padding: 5px 40px;
-  background: linear-gradient(to bottom right, #c6b6dac4, #8677a79f);
+  background: linear-gradient(to bottom right, #efe3ff, #b9a9dc);
   color: #3f1262;
   text-align: center;
   display: flex;
@@ -16,9 +16,9 @@
   width: 90%;
   max-width: 1200px;
   height: 650px;
-  background-color: rgba(180, 130, 200, 0.9);
+  background-color: #70549fc0;
   border-radius: 16px;
-  box-shadow: 0px 8px 8px #42296c;
+  box-shadow: 0px 5px 5px #42296c;
   display: flex;
   align-items: stretch; 
   justify-content: flex-start;
@@ -35,9 +35,9 @@
 
 .progress-header h2 {
   font-size: 47px;
-  color: #7659a8;
+  color: #70549F;
   margin: 25px 0 0 42px;
-  text-shadow: 1px 2px 0px #4d278fd2;
+  text-shadow: 1px 2px 0px #663eab;
   font-weight: 700;
   letter-spacing: 1px;
 }

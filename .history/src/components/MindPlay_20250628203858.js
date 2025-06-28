@@ -68,7 +68,7 @@ const MindPlay = () => {
           scaleOnHover={1.1}
           showTooltip={true}
           displayOverlayContent={true}
-          overlayContent={<p className="tilted-card-demo-text">Circle Tap</p>}
+          overlayContent={<p className="tilted-card-demo-text">Circle tap</p>}
           onClick={() => navigate('/reaction')}
         />
         <p className="card-description">See a circle? Tap fast! You’ve got 3 lives, and every miss costs one. How long can you keep up?</p>

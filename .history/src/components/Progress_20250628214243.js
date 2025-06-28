@@ -8,7 +8,7 @@ const Progress = () => {
     <section className="progress-section" id="myprogress">
      
       <div className="progress-box">
-  <img src={progress} alt="Progress Background" className="progress-image" />
+  <img src={img} alt="Progress Background" className="progress-image" />
 
   <div className="progress-header">
     <h2>My Progress</h2>
