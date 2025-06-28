@@ -1,0 +1,45 @@
+.welcome {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #f8f1fc, #e1dcf6);
+  text-align: center;
+  padding: 40px;
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+}
+
+.welcome-img {
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+  animation: fadeIn 1.5s ease;
+}
+
+.start-btn {
+  background-color: #5a4386;
+  color: #0a001a;
+  padding: 16px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0 20px #cab0ff;
+}
+
+.start-btn:hover {
+  background-color: #d69f2f;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

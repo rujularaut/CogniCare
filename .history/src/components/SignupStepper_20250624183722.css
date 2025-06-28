@@ -1,0 +1,52 @@
+.signup-container {
+background: linear-gradient(to bottom right,  #ecdffd);
+  color: #513c7a;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 1em;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background-color: #5a4386;
+  color: #d7cbf9;
+}
+
+input::placeholder {
+  color: #d7cbf9;
+}
+
+.final-login-text {
+  margin-top: 0.5rem;
+  color: #e9e0fb; /* soft lilac or your theme color */
+  font-size: 14.5px;
+  text-align: left;
+}
+
+.final-login-text a {
+  color: #fbb967; /* glowing peach link */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.final-login-text a:hover {
+  text-decoration: underline;
+  color: #ffdca3;
+}
+
+.final-welcome-heading {
+  font-size: 35px;              /* ⬅️ Increase size */
+  color: #5a4386;
+  text-shadow: 0 0 8px #7f64b0;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.4;             /* Optional: more spacing between lines */
+  margin-bottom: 0.1px;
+}
+

@@ -1,0 +1,10 @@
+
+.meditation-room {
+  height: 100vh;
+  background-color: #0a001a;
+  color: #fbb967;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

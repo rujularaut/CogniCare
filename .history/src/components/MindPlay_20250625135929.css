@@ -1,0 +1,89 @@
+.mindplay-section {
+  min-height: 250px;
+  padding: 100px 40px;
+  background-color: #a790c8;
+  color: #3f1262;
+  position: relative;
+}
+
+
+.mindplay-section h2,
+.mindplay-section p {
+  position: absolute;
+  right: 20px;
+  text-align: right;
+}
+
+.mindplay-section h2 {
+  top: 40px;
+  font-size: 70px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 6px #a790c8;
+}
+
+.mindplay-section {
+  min-height: 200px;
+  padding: 5px 40px;
+  background-color: #a790c8;
+  color: #e1c3f8;
+  position: relative;
+}
+
+
+.revealed {
+  font-size: 65px;
+  font-weight: 900;
+  color: #3f1262;
+  text-shadow: 0 0 6px #a685f2;
+}
+
+.encrypted {
+  font-size: 55px;
+  font-weight: 900;
+  color: #cdbcf2;
+  opacity: 0.5;
+}
+
+.vertical-decrypt {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Anton', sans-serif;
+  font-size: 100px;           /* 🔥 Make it BIG */
+  font-weight: 900;          /* extra bold */
+  line-height: 1.5;
+  color: #3f1262;
+  text-shadow: 0 0 8px #d2c7ec;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 10px;
+  height: 100vh;             /* take up full vertical space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mindplay-cards {
+  margin-top: 40px;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tilted-card-demo-text {
+  font-size: 18px;
+  color: #ffffff;
+  background-color: rgba(81, 60, 122, 0.9);
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.mindplay-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}

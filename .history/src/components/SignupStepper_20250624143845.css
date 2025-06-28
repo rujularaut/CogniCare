@@ -1,0 +1,23 @@
+.signup-container {
+  background-color: #f8f1fd;
+  color: #f8f1fd;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 1em;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background-color: #3a2857;
+  color: #fff;
+}
+
+input::placeholder {
+  color: #cab0ff;
+}

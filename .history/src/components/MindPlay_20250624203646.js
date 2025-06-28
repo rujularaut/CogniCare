@@ -1,0 +1,23 @@
+import React from 'react';
+import './MindPlay.css';
+import DecryptedText from './DecryptedText';
+
+const MindPlay = () => {
+  return (
+    <section className="mindplay-section">
+      <DecryptedText
+        text="MindPlay"
+        animateOn="view"
+        revealDirection="center"
+        speed={100}            // slower speed (ms per step)
+        maxIterations={90}     // more steps = slower animation
+        sequential={true}      // reveals one letter at a time
+        className="revealed"
+        encryptedClassName="encrypted"
+      />
+      <p>Tap into fun. Tune out stress.</p>
+    </section>
+  );
+};
+
+export default MindPlay;

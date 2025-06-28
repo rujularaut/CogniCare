@@ -1,0 +1,20 @@
+
+.mindplay-section {
+  padding: 320px 20px;
+  background-color: #cab0ff;
+  text-align: center;
+  color: #3f1262;
+}
+
+.mindplay-section h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 6px #a685f2;
+}
+
+.mindplay-section p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #6c05fc;
+}

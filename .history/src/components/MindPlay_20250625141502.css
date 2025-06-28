@@ -1,0 +1,65 @@
+.mindplay-section {
+  padding: 80px 40px;
+  background-color: #a790c8;
+  color: #e1c3f8;
+  position: relative;
+}
+
+.mindplay-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.vertical-decrypt {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Anton', sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: #3f1262;
+  text-shadow: 0 0 8px #d2c7ec;
+  cursor: pointer;
+  display: flex;
+  align-items:start;
+  justify-content:left;
+}
+
+.mindplay-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 200px; 
+  margin-left: 30; /* 👈 pushes the cards upward */
+}
+
+
+.revealed {
+  font-size: 65px;
+  font-weight: 900;
+  color: #3f1262;
+  text-shadow: 0 0 6px #a685f2;
+}
+
+.encrypted {
+  font-size: 55px;
+  font-weight: 900;
+  color: #cdbcf2;
+  opacity: 0.5;
+}
+
+.tilted-card-demo-text {
+  font-size: 18px;
+  color: #ffffff;
+  background-color: rgba(81, 60, 122, 0.9);
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-align: center;
+}

@@ -1,0 +1,50 @@
+.meditation-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #513c7a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.meditation-content {
+  position: relative;
+  z-index: 1;
+  color: #d6d8ff;
+  text-shadow: 0 0 10px #6c72ac;
+}
+
+.meditation-content h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.meditation-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #cccef8;
+}
+
+
+.meditate-btn {
+  text-decoration: none;       /* 🚫 removes underline */
+  color: #fff;                 /* or your button text color */
+  background-color: #cdd0fc;   /* or your button bg */
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #7b82c0;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.meditate-btn:hover {
+  background-color: #dcdeff;
+  color: #48326a;
+  transform: scale(1.05);
+  text-decoration: none;  /* 🔁 just to be extra safe */
+}

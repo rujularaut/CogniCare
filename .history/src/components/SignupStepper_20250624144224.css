@@ -1,0 +1,24 @@
+.signup-container {
+background: linear-gradient(to bottom right, #f8f1fd, #d2caf4);
+  color: #  background-color: #5a4386;
+;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 1em;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background-color: #3a2857;
+  color: #fff;
+}
+
+input::placeholder {
+  color: #cab0ff;
+}

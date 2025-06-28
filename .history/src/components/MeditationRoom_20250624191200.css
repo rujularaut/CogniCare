@@ -1,0 +1,27 @@
+
+.meditation-room {
+  height: 100vh;
+  background-color: #0a001a;
+  color: #fbb967;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.back-btn {
+  margin-top: 2rem;
+  padding: 12px 24px;
+  background-color: #fbb967;
+  color: #0a001a;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  box-shadow: 0 0 10px #fbb967;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #ffdca3;
+  transform: scale(1.05);
+}

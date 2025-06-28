@@ -1,0 +1,19 @@
+.progress-section {
+    padding: 300px 40px;
+    background: linear-gradient(to bottom right, #f8f1fd, #dccaf48d);
+    color: #3f1262;
+    text-align: center;
+}
+
+.progress-section h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 6px #a685f2;
+}
+
+.progress-section p{
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #6f468a;
+}

@@ -1,0 +1,12 @@
+.progress-section {
+    padding: 300px 40px;
+    background-color: #e5d9fa ;
+    color: #3f1262;
+    text-align: center;
+}
+
+.progress-section h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 6px #a685f2;
+}

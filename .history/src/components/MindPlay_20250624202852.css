@@ -1,0 +1,45 @@
+.mindplay-section {
+  min-height: 300px;
+  padding: 60px 40px;
+  background-color: #412d6b;
+  color: #3f1262;
+  position: relative;
+}
+
+
+.mindplay-section h2,
+.mindplay-section p {
+  position: absolute;
+  right: 40px;
+  text-align: right;
+}
+
+.mindplay-section h2 {
+  top: 40px;
+  font-size: 50px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 6px #a685f2;
+}
+
+.mindplay-section p {
+  top: 110px;
+  font-size: 18px;
+  max-width: 300px;
+  color: #7c52b6;
+}
+
+.revealed {
+  font-size: 50px;
+  font-weight: bold;
+  color: #3f1262;
+  text-shadow: 0 0 6px #a685f2;
+}
+
+.encrypted {
+  font-size: 50px;
+  font-weight: bold;
+  color: #a992db;
+  opacity: 0.5;
+}
+
+
