@@ -1,0 +1,9 @@
+.meditation-options-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #e8dcff, #d3bfff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  padding: 100px 20px;
+}

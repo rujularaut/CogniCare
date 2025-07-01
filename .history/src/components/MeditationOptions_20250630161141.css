@@ -1,0 +1,35 @@
+.meditation-options-page {
+  min-height: 72vh;
+  background-image: url('../assets/meditation-bg.png');
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 100px 20px;
+  flex-wrap: wrap;
+}
+
+.tilted-card-caption {
+  transition: background-color 0.3s ease;
+}
+
+.card-with-tagline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 320px;
+  text-align: center;
+}
+
+.meditation-tagline {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffffcc; /* light white with opacity */
+  font-style: italic;
+  line-height: 1.4;
+}

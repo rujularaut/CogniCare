@@ -1,0 +1,99 @@
+.mindplay-section {
+  padding: 80px 40px;
+  background: linear-gradient(to bottom right, #a790c8, #4c3968);
+  color: #e1c3f8;
+  position: relative;
+  min-height: 90vh;
+  text-align: center;
+}
+
+.mindplay-heading {
+  width: 100%;
+  text-align: center;
+  margin-top: -80px;
+  margin-bottom: 60px;
+  margin-left: 40px;
+}
+
+.mindplay-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+  min-height: 70vh;
+}
+
+.vertical-decrypt {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Anton', sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+  letter-spacing: 0px;
+  line-height: 1.2;
+  color: #412e69;
+  text-shadow: 0 0 15px #d2c7ec;
+  cursor: pointer;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  height: 80vh;
+  padding: 0px 10px;
+  margin-bottom: 20px;
+}
+
+.mindplay-cards {
+  display: flex;
+  gap: 200px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+.revealed {
+  font-size: 120px;
+  text-align: center;
+  letter-spacing: 100px;
+  font-weight: 900;
+  color: #3a1357;
+  text-shadow: 0 5px 0 #665590;
+}
+
+.encrypted {
+  font-size: 120px;
+  font-weight: 900;
+  letter-spacing: 100px;
+  color: #cdbcf2;
+  opacity: 0.5;
+}
+
+.tilted-card-demo-text {
+  font-size: 18px;
+  color: #ffffff;
+  background-color: rgba(106, 86, 145, 0.9);
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.card-with-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
+  text-align: center;
+}
+
+.card-description {
+  margin-top: 12px;
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #3d0d61;
+  background-color: #dfccf2cc;
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 8px 0px rgba(38, 10, 67, 0.2);
+}

@@ -1,0 +1,22 @@
+.meditation-options-page {
+  min-height: 72vh;
+  background-image: url('../assets/meditation-bg.png');
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 100px 20px;
+  flex-wrap: wrap;
+}
+
+.tilted-card-caption {
+  transition: background-color 0.3s ease;
+}
+
+.tilted-card {
+  box-shadow: 0 10px 30px rgba(15, 172, 149, 0.4); /* soft lavender glow */
+}

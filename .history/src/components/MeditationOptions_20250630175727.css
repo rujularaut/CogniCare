@@ -1,0 +1,19 @@
+.meditation-options-page {
+  min-height: 65vh;
+  background-color: rgb(143, 98, 206);
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 100px 20px;
+  flex-wrap: wrap;
+}
+
+.tilted-card-caption {
+  transition: background-color 0.3s ease;
+}
+

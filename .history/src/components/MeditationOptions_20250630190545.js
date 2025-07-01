@@ -1,0 +1,41 @@
+import React from 'react';
+import ChromaGrid from './ChromaGrid';
+import calmImg from '../assets/calm.png';
+import breatheImg from '../assets/breathe.png';
+
+
+const items = [
+  {
+    image: calmImg,
+    title: 'Cosmic Touch',
+    subtitle: 'Move your cursor. Paint with light. Flow with your energy',
+    borderColor: '#C8B6FF',
+    gradient: 'linear-gradient(145deg, #C8B6FF, #000)',
+    url: '/splash'
+  },
+  {
+    image: breatheImg,
+    title: 'Meditation Room',
+    subtitle: 'Choose your sound. Set your space. Begin your inner journey',
+    borderColor: '#A78BFA',
+    gradient: 'linear-gradient(145deg, #DDD6FE, #A78BFA)',
+    url: '/blank'
+  }
+];
+
+
+const MeditationOptions = () => {
+  return (
+    <div style={{ height: '82vh', background: '#1b1b2f', paddingTop: '80px' }}>
+      <ChromaGrid
+        items={items}
+        radius={300}
+        damping={0.45}
+        fadeOut={0.6}
+        ease="power3.out"
+      />
+    </div>
+  );
+};
+
+export default MeditationOptions;
