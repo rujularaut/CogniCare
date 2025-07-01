@@ -15,7 +15,7 @@ import Progress from './components/Progress';
 import RecallGame from './components/RecallGame';
 import ReactionGame from './components/ReactionGame';
 import MeditationOptions from './components/MeditationOptions';
-import Breathing from './components/Breathing';
+{/*import Breathing from './components/Breathing';*/}
 
 function ScrollToSection() {
   const location = useLocation();
