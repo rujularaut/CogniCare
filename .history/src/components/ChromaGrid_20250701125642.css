@@ -12,7 +12,7 @@
 
   --x: 50%;
   --y: 50%;
-  --r: 200px;
+  --r: 220px;
 }
 
 
@@ -33,8 +33,6 @@
 }
 
 .chroma-card {
-  --r: 120px;
-
   position: relative;
   display: flex;
   flex-direction: column;
@@ -46,10 +44,9 @@
   transition: border-color 0.3s ease;
   background: var(--card-gradient);
 
-  --mouse-x: 50%;
-  --mouse-y: 50%;
+  --mouse-x: 30%;
+  --mouse-y: 30%;
   --spotlight-color: rgba(255, 255, 255, 0.245);
-  
 }
 
 .chroma-card:hover {
@@ -109,7 +106,6 @@
 }
 
 .chroma-overlay {
-    --r: 210px;
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -139,7 +135,6 @@
 }
 
 .chroma-fade {
-    --r: 150px;
   position: absolute;
   inset: 0;
   pointer-events: none;

@@ -97,7 +97,7 @@ const [showProfileBox, setShowProfileBox] = useState(false);
       top: '30px',
       right: 0,
       backgroundColor: '#DCD6F7',
-      color: '#412e69',
+      color: '#3f1262',
       padding: '30px',
       borderRadius: '8px',
       boxShadow: '4px 5px 1px rgba(52, 27, 89, 0.76)',

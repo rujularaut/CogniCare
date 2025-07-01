@@ -33,8 +33,6 @@
 }
 
 .chroma-card {
-  --r: 120px;
-
   position: relative;
   display: flex;
   flex-direction: column;
@@ -49,7 +47,8 @@
   --mouse-x: 50%;
   --mouse-y: 50%;
   --spotlight-color: rgba(255, 255, 255, 0.245);
-  
+  --r: 20px;
+
 }
 
 .chroma-card:hover {
@@ -109,7 +108,6 @@
 }
 
 .chroma-overlay {
-    --r: 210px;
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -139,7 +137,6 @@
 }
 
 .chroma-fade {
-    --r: 150px;
   position: absolute;
   inset: 0;
   pointer-events: none;

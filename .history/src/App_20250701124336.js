@@ -97,20 +97,19 @@ const [showProfileBox, setShowProfileBox] = useState(false);
       top: '30px',
       right: 0,
       backgroundColor: '#DCD6F7',
-      color: '#412e69',
+      color: '#3f1262',
       padding: '30px',
       borderRadius: '8px',
-      boxShadow: '4px 5px 1px rgba(52, 27, 89, 0.76)',
+      boxShadow: '4px 5px 1px rgba(52, 27, 89, 0.84)',
       zIndex: 100
     }}>
-      <p style={{ margin: '4px 0', fontWeight: 'bold', color: '#5F4B8B' }}>Rujula Raut</p>
-      <p style={{ margin: '4px 0', fontSize: '12px', color: '#5F4B8B' }}>rujula@gmail.com</p>
+      <p style={{ margin: '4px 0', fontWeight: 'bold' }}>Rujula Raut</p>
+      <p style={{ margin: '4px 0', fontSize: '12px' }}>rujula@example.com</p>
       <button style={{
         marginTop: '8px',
         fontSize: '12px',
-        fontWeight: 'bold',
-        background: '#5F4B8B',
-        color: '#DCD6F7',
+        background: '#e1c3f8',
+        color: '#3f1262',
         border: 'none',
         borderRadius: '5px',
         padding: '4px 8px',

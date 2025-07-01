@@ -109,7 +109,6 @@
 }
 
 .chroma-overlay {
-    --r: 210px;
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -139,7 +138,6 @@
 }
 
 .chroma-fade {
-    --r: 150px;
   position: absolute;
   inset: 0;
   pointer-events: none;

@@ -62,7 +62,7 @@ const [showProfileBox, setShowProfileBox] = useState(false);
     <>
       <ScrollToSection />
 
-      {}
+      {/* ✅ Floating side nav — hidden during welcome */}
       {showFloatingNav && (
         <div className="floating-nav-vertical">
           <a href="/" data-tooltip="Home"><FaHome /></a>
@@ -73,7 +73,7 @@ const [showProfileBox, setShowProfileBox] = useState(false);
         </div>
       )}
 
-      {}
+      {/* ✅ Top nav — always visible */}
       <nav>
         <div className="logo">CogniCare</div>
         <ul>
@@ -84,10 +84,10 @@ const [showProfileBox, setShowProfileBox] = useState(false);
           <li style={{ position: 'relative' }}>
   <button
     onClick={() => setShowProfileBox(prev => !prev)}
-    style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#DCD6F7' }}
+    style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#fff' }}
     title="Profile"
   >
-    <FaUserCircle size={28} />
+    <FaUserCircle size={18} />
   </button>
 
   {}
@@ -96,21 +96,20 @@ const [showProfileBox, setShowProfileBox] = useState(false);
       position: 'absolute',
       top: '30px',
       right: 0,
-      backgroundColor: '#DCD6F7',
-      color: '#412e69',
-      padding: '30px',
+      backgroundColor: '#fff',
+      color: '#3f1262',
+      padding: '10px',
       borderRadius: '8px',
-      boxShadow: '4px 5px 1px rgba(52, 27, 89, 0.76)',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
       zIndex: 100
     }}>
-      <p style={{ margin: '4px 0', fontWeight: 'bold', color: '#5F4B8B' }}>Rujula Raut</p>
-      <p style={{ margin: '4px 0', fontSize: '12px', color: '#5F4B8B' }}>rujula@gmail.com</p>
+      <p style={{ margin: '4px 0', fontWeight: 'bold' }}>Rujula Raut</p>
+      <p style={{ margin: '4px 0', fontSize: '12px' }}>rujula@example.com</p>
       <button style={{
         marginTop: '8px',
         fontSize: '12px',
-        fontWeight: 'bold',
-        background: '#5F4B8B',
-        color: '#DCD6F7',
+        background: '#e1c3f8',
+        color: '#3f1262',
         border: 'none',
         borderRadius: '5px',
         padding: '4px 8px',
