@@ -1,17 +1,50 @@
+/* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
 
+/* Base styles for body */
 body {
   margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;         /* Prevent horizontal scrollbar */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f9f8fc;  /* Optional: light background */
 }
 
+/* Font styling for code blocks */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Ensure full viewport width/height is used */
+html, body {
+  max-width: 100vw;
+  max-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Fullscreen iframe for embedded games like Number Recall */
+iframe {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  overflow: hidden;
+}
+
+/* Optional: remove scrollbar if you want during iframe view */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 10px;
 }

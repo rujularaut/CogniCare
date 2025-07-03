@@ -20,7 +20,7 @@ const MindPlay = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2, ease: 'easeOut' }}
         >
-          <DecryptedText
+          {/* <DecryptedText
             text="MINDPLAY"
             animateOn="view"
             revealDirection="center"
@@ -29,7 +29,7 @@ const MindPlay = () => {
             sequential={true}
             className="revealed"
             encryptedClassName="encrypted"
-          />
+          /> */}
         </motion.div>
       </div>
 

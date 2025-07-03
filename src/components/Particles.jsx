@@ -74,7 +74,7 @@ const fragment = `
 `;
 
 const Particles = ({
-  particleCount = 200,
+  particleCount = 0,
   particleSpread = 10,
   speed = 0.1,
   particleColors,

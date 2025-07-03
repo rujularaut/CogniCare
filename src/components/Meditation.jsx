@@ -20,7 +20,7 @@ const Meditation = () => {
       <div className="meditation-content">
         <h2>CalmSpace</h2>
         <p>Find calm, breathe deep, and center your mind.</p>
-        <Link to="/meditation" className="meditate-btn">Begin Meditation</Link>
+        <Link to="/meditationroom" className="meditate-btn">Begin Meditation</Link>
       </div>
     </section>
   );

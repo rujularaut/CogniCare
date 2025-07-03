@@ -39,13 +39,13 @@
   border-radius: 20px;
   will-change: transform;
   transform: translateZ(0);
-  box-shadow: 0 5px 10px #927bc0;
+  box-shadow: 0 10px 15px #31224e;
   
 }
 
 .tilted-card-img:hover {
   filter: brightness(1.1) saturate(1.2);
-  box-shadow: 0 0 15px #c0b1ff;
+  box-shadow: 0 0 15px #ffdca3;
   transition: all 0.3s ease;
 }
 

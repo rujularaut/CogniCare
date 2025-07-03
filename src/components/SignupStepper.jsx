@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-
+import { useNavigate, Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import Stepper, { Step } from './Stepper';
 import './SignupStepper.css';
@@ -12,15 +11,39 @@ const SignupStepper = () => {
     password: '',
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleFinalSubmit = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        navigate('/login');
+      } else {
+        alert('Signup failed: ' + result.error);
+      }
+    } catch (error) {
+      alert('Something went wrong: ' + error.message);
+    }
   };
 
   return (
     <div className="signup-container">
       <Stepper
         initialStep={1}
-        onFinalStepCompleted={() => console.log('Form complete', formData)}
+        onFinalStepCompleted={handleFinalSubmit}
         nextButtonText="Next"
         backButtonText="Back"
       >
@@ -35,8 +58,8 @@ const SignupStepper = () => {
             required
           />
           <p className="signup-link">
-    Already have an account? <Link to="/login">Login here</Link>
-  </p>
+            Already have an account? <Link to="/login">Login here</Link>
+          </p>
         </Step>
         <Step>
           <h2>Your Age</h2>
@@ -74,7 +97,8 @@ const SignupStepper = () => {
         <Step>
           <h2 className="final-welcome-heading">
             All set! <br />
-            Welcome, {formData.name}.</h2>
+            Welcome, {formData.name}.
+          </h2>
         </Step>
       </Stepper>
     </div>

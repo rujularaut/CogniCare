@@ -1,0 +1,41 @@
+
+/* ProgressChartFull.css */
+
+.progress-chart-full {
+  padding: 2rem;
+  margin: 2rem auto;
+  background: linear-gradient(to bottom right, #c6b6dac4, #8677a79f);
+  border-radius: 16px;
+  box-shadow: 0 8px 12px #42296c;
+  max-width: 1100px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #3f1262;
+  text-align: center;
+}
+
+.progress-chart-full h2 {
+  font-size: 32px;
+  color: #7659a8;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 2px 0px #4d278fd2;
+}
+
+.responsive-chart {
+  width: 100%;
+  height: 400px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .progress-chart-full {
+    padding: 1rem;
+  }
+
+  .progress-chart-full h2 {
+    font-size: 24px;
+  }
+
+  .responsive-chart {
+    height: 300px;
+  }
+}
