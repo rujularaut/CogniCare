@@ -20,8 +20,10 @@ const Login = () => {
       const data = await response.json();
 
       if (data.success) {
-        // ✅ Save only email
+        // Save email to localStorage for tracking scores
         localStorage.setItem('userEmail', email);
+
+        // Redirect to home
         navigate('/');
       } else {
         alert(data.error || 'Login failed');

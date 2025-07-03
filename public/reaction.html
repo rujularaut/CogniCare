@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎯 Focus Flick</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #c6b6dac4, #8677a79f);
+  color: #3f1262;
+  text-align: center;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: #5e348e;
+  margin-bottom: 10px;
+  text-shadow: 1px 2px 0px #cfc1e6;
+}
+
+.game-area {
+  background: rgba(180, 130, 200, 0.9);
+  width: clamp(200px, 50vw, 300px);
+  height: clamp(400px, 70vh, 600px);
+  border-radius: 16px;
+  box-shadow: 0px 8px 8px #42296c;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #9b5de5;
+  position: absolute;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(100, 30, 200, 0.5);
+}
+
+.menu {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.menu button {
+  background: #7659a8;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+.menu button:hover {
+  background: #5e348e;
+}
+
+.hearts {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.heart {
+  font-size: 20px;
+  color: #e91e63;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(60, 30, 90, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #f0e6fa;
+  z-index: 10;
+  text-align: center;
+  padding: 20px;
+}
+
+.overlay button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #5e348e;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+.overlay button:hover {
+  background: #42296c;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Focus Flick<br><small>Score: <span id="score">0</span> | Level: <span id="level">1</span></small></h1>
+    <div class="game-area" id="gameArea"></div>
+    <div class="hearts" id="hearts"></div>
+    <div class="menu">
+      <button onclick="pauseGame()">⏸️ Pause</button>
+      <button onclick="restartGame()">🔄 Restart</button>
+      <button onclick="quitGame()">❌ Quit</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="startScreen">
+    <div><strong>How to Play:</strong> Tap/click green circles before they vanish!</div>
+    <button onclick="startGame()">▶ Start Game</button>
+  </div>
+
+  <div class="overlay" id="gameOverScreen" style="display:none">
+    <div><strong>Game Over!</strong></div>
+    <button onclick="restartGame()">🔁 Restart</button>
+  </div>
+
+  <script>
+    const gameArea = document.getElementById("gameArea");
+    const scoreEl = document.getElementById("score");
+    const levelEl = document.getElementById("level");
+    const heartsEl = document.getElementById("hearts");
+    const startScreen = document.getElementById("startScreen");
+    const gameOverScreen = document.getElementById("gameOverScreen");
+
+    let score = 0, level = 1, interval = null, lives = 3, paused = false;
+
+    function updateHUD() {
+      scoreEl.textContent = score;
+      levelEl.textContent = level;
+      heartsEl.innerHTML = "❤️".repeat(lives);
+    }
+
+    function startGame() {
+      score = 0;
+      level = 1;
+      lives = 3;
+      paused = false;
+      updateHUD();
+      startScreen.style.display = "none";
+      spawnLoop();
+    }
+
+    function spawnLoop() {
+      clearInterval(interval);
+      const speed = Math.max(1000 - level * 100, 300);
+      interval = setInterval(spawnCircle, speed);
+    }
+
+    function spawnCircle() {
+      if (paused || lives <= 0) return;
+      const circle = document.createElement("div");
+      circle.classList.add("circle");
+
+      const gameWidth = gameArea.clientWidth;
+      const gameHeight = gameArea.clientHeight;
+      const circleSize = 40; // fixed size to avoid offsetWidth issues
+
+      const maxX = gameWidth - circleSize;
+      const maxY = gameHeight - circleSize;
+
+      circle.style.left = `${Math.random() * maxX}px`;
+      circle.style.top = `${Math.random() * maxY}px`;
+
+      let clicked = false;
+      circle.onclick = () => {
+        clicked = true;
+        gameArea.removeChild(circle);
+        score++;
+        if (score % 5 === 0) level++;
+        updateHUD();
+        spawnLoop();
+      };
+
+      gameArea.appendChild(circle);
+
+      setTimeout(() => {
+        if (!clicked && gameArea.contains(circle)) {
+          gameArea.removeChild(circle);
+          lives--;
+          updateHUD();
+          if (lives <= 0) endGame();
+        }
+      }, 1500);
+    }
+
+    function pauseGame() {
+      paused = !paused;
+    }
+
+    function restartGame() {
+      location.reload();
+    }
+
+    function quitGame() {
+      saveScoreToServer(score, level, () => {
+        window.parent.dispatchEvent(new Event("reactionQuit"));
+      });
+    }
+
+    function endGame() {
+      clearInterval(interval);
+      gameOverScreen.style.display = "flex";
+      saveScoreToServer(score, level);
+    }
+
+    function saveScoreToServer(score, level, callback = () => {}) {
+      const email = localStorage.getItem("userEmail");
+      if (!email) return;
+
+      fetch("http://localhost:5000/api/score", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          game_name: "Circle Tap",
+          score: score,
+          level: level
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          console.log("✅ Score saved");
+        } else {
+          console.error("❌ Failed to save score:", data.error);
+        }
+        callback();
+      })
+      .catch(err => {
+        console.error("Server error:", err);
+        callback();
+      });
+    }
+  </script>
+</body>
+</html>

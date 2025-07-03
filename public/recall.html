@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Number Recall Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #f2e6ff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 6px;
+      justify-content: center;
+      margin: 20px auto;
+      width: 90vw;
+      max-width: 400px;
+    }
+
+    .cell {
+      aspect-ratio: 1 / 1;
+      background-color: #c7b8ea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(20px, 6vw, 36px);
+      color: #4b0082;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+    .cell:hover {
+      transform: scale(1.05);
+      background-color: #f0e6ff;
+    }
+
+    .hidden {
+      background-color: #b5a8d6;
+      color: transparent;
+    }
+
+    .correct {
+      background-color: #a084ca !important;
+      color: white;
+    }
+
+    .wrong {
+      background-color: #ff6b81 !important;
+      color: white;
+    }
+
+    .disabled {
+      pointer-events: none;
+    }
+
+    .info {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .score-bar {
+      margin: 10px auto;
+      height: 20px;
+      width: 80%;
+      background-color: #a678e2;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .score-fill {
+      height: 100%;
+      background-color: #6a1b9a;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .menu {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: none;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #7367f0;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 8px;
+    }
+
+    .dropdown-content button {
+      background-color: transparent;
+      border: none;
+      color: white;
+      padding: 10px;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      border-bottom: 1px solid #a3bffa;
+    }
+
+    .dropdown-content button:hover {
+      background-color: #00bcd4;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    #startOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+    }
+
+    #startButton {
+      font-size: 20px;
+      margin-top: 20px;
+      background-color: #7367f0;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="startOverlay">
+    <h2>🧠 How to Play</h2>
+    <p>Remember the order of numbers shown briefly and then tap them in the same order.</p>
+    <p>Choose the numbers in increasing order.</p>
+    <button id="startButton">Start Game</button>
+  </div>
+
+  <h1>🧠 Number Recall Game</h1>
+  <div class="info">Level: <span id="level">1</span> | Score: <span id="score">0</span></div>
+  <div class="score-bar">
+    <div id="scoreFill" class="score-fill"></div>
+  </div>
+  <div id="grid" class="grid"></div>
+
+  <div class="menu" id="menu">
+    <div class="dropdown">
+      <button>☰ Menu</button>
+      <div class="dropdown-content">
+        <button onclick="pauseGame()">⏸️ Pause</button>
+        <button onclick="restartGame()">🔄 Restart</button>
+        <button onclick="quitGame()">❌ Quit</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="correctSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_d67f839f0a.mp3"></audio>
+  <audio id="wrongSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3dd6f6d57c.mp3"></audio>
+  <audio id="successSound" src="https://cdn.pixabay.com/audio/2022/08/01/audio_4fcd0e5d95.mp3"></audio>
+
+  <script>
+    let level = 1;
+    let score = 0;
+    let correctOrder = [];
+    let userOrder = [];
+    let isPaused = false;
+
+    const grid = document.getElementById("grid");
+    const scoreEl = document.getElementById("score");
+    const levelEl = document.getElementById("level");
+    const scoreFill = document.getElementById("scoreFill");
+    const overlay = document.getElementById("startOverlay");
+    const correctSound = document.getElementById("correctSound");
+    const wrongSound = document.getElementById("wrongSound");
+    const successSound = document.getElementById("successSound");
+    const menu = document.getElementById("menu");
+
+    document.getElementById("startButton").addEventListener("click", () => {
+      overlay.style.display = "none";
+      menu.style.display = "block";
+      generateGrid();
+    });
+
+    function getConfig(level) {
+      const configs = [
+        { rows: 3, cols: 3, count: 4, time: 10 },
+        { rows: 3, cols: 3, count: 6, time: 10 },
+        { rows: 3, cols: 3, count: 9, time: 10 },
+        { rows: 3, cols: 4, count: 5, time: 8 },
+        { rows: 3, cols: 4, count: 8, time: 8 },
+        { rows: 3, cols: 4, count: 12, time: 8 },
+        { rows: 4, cols: 4, count: 6, time: 6 },
+        { rows: 4, cols: 4, count: 10, time: 6 },
+        { rows: 4, cols: 4, count: 16, time: 6 },
+        { rows: 4, cols: 5, count: 7, time: 5 },
+        { rows: 4, cols: 5, count: 12, time: 5 },
+      ];
+      return configs[level - 1] || { rows: 4, cols: 5, count: 20, time: 5 };
+    }
+
+    function generateGrid() {
+      grid.innerHTML = "";
+      userOrder = [];
+      isPaused = false;
+      const config = getConfig(level);
+      grid.style.gridTemplateColumns = `repeat(${config.cols}, 1fr)`;
+
+      const totalCells = config.rows * config.cols;
+      const numbers = Array.from({ length: totalCells }, (_, i) => i);
+      const selected = [];
+
+      while (selected.length < config.count) {
+        const rand = numbers.splice(Math.floor(Math.random() * numbers.length), 1)[0];
+        selected.push(rand);
+      }
+
+      correctOrder = selected
+        .map((index, i) => ({ index, value: i + 1 }))
+        .sort((a, b) => a.value - b.value);
+
+      for (let i = 0; i < totalCells; i++) {
+        const box = document.createElement("div");
+        box.classList.add("cell");
+        const match = correctOrder.find(x => x.index === i);
+        if (match) box.textContent = match.value;
+        grid.appendChild(box);
+      }
+
+      setTimeout(() => {
+        document.querySelectorAll(".cell").forEach(cell => cell.classList.add("hidden"));
+      }, config.time * 1000);
+
+      setTimeout(() => enableClicks(), (config.time + 0.5) * 1000);
+    }
+
+    function enableClicks() {
+      document.querySelectorAll(".cell").forEach((cell, index) => {
+        cell.classList.remove("disabled");
+        cell.addEventListener("click", () => handleClick(cell, index), { once: true });
+      });
+    }
+
+    function handleClick(cell, index) {
+      if (isPaused) return;
+      const expected = correctOrder[userOrder.length];
+      if (expected.index === index) {
+        cell.classList.add("correct");
+        correctSound.play();
+        userOrder.push(index);
+      } else {
+        cell.classList.add("wrong");
+        wrongSound.play();
+        endLevel(false);
+        return;
+      }
+
+      if (userOrder.length === correctOrder.length) {
+        successSound.play();
+        endLevel(true);
+      }
+    }
+
+    function endLevel(success) {
+      document.querySelectorAll(".cell").forEach(cell => cell.classList.add("disabled"));
+      if (success) {
+        score += correctOrder.length * 2 + 5;
+        level++;
+      } else {
+        score += userOrder.length * 2;
+      }
+
+      scoreEl.textContent = score;
+      levelEl.textContent = level;
+      scoreFill.style.width = Math.min(100, score) + "%";
+      saveScoreToServer(score, level);
+      setTimeout(generateGrid, 1500);
+    }
+
+    function pauseGame() {
+      isPaused = !isPaused;
+    }
+
+    function restartGame() {
+      generateGrid();
+    }
+
+    function quitGame() {
+      saveScoreToServer(score, level, () => {
+        window.parent.postMessage("quit-recall-game", "*");
+      });
+    }
+
+    function saveScoreToServer(score, level, callback = () => {}) {
+      const email = localStorage.getItem("userEmail");
+      if (!email) return;
+
+      fetch("http://localhost:5000/api/score", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          game_name: "Number Recall",
+          score: score,
+          level: level
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          console.log("✅ Score saved");
+        } else {
+          console.error("❌ Score save failed:", data.error);
+        }
+        callback();
+      })
+      .catch(err => {
+        console.error("❌ Server error:", err);
+        callback();
+      });
+    }
+  </script>
+</body>
+</html>

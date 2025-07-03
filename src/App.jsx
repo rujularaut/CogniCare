@@ -14,11 +14,6 @@ import SignupStepper from './components/SignupStepper';
 import MeditationRoom from './components/MeditationRoom';
 import MindPlay from './components/MindPlay';
 
-// ✅ New component routes for Progress Tracker
-import StreakDetails from './components/StreakDetails';
-import TrendAnalysis from './components/TrendAnalysis';
-import ProgressChartFull from './components/ProgressChartFull';
-
 import './App.css';
 
 function ScrollToSection() {
@@ -44,27 +39,45 @@ function AppContent() {
   const calmspaceRef = useRef(null);
   const welcomeRef = useRef(null);
   const progressRef = useRef(null);
+  const location = useLocation();
+  const hash = location.hash;
 
   const isProgressInView = useInView(progressRef, { amount: 0.3, once: false });
   const isWelcomeInView = useInView(welcomeRef, { amount: 0.6 });
   const isMindplayInView = useInView(mindplayRef, { amount: 0.3, once: false });
   const isCalmspaceInView = useInView(calmspaceRef, { amount: 0.3, once: false });
 
-  const location = useLocation();
-  const hash = location.hash;
   const isOnHomePage = location.pathname === '/';
   const isGameRoute = location.pathname === '/recall' || location.pathname === '/reaction';
 
   const showFloatingNav = isOnHomePage &&
     !isWelcomeInView &&
     (isMindplayInView || isCalmspaceInView || isProgressInView ||
-     hash === '#mindplay' || hash === '#calmspace-section' || hash === '#myprogress');
+      hash === '#mindplay' || hash === '#calmspace-section' || hash === '#myprogress');
+
+  useEffect(() => {
+    const shouldLockScroll = ['/meditationroom', '/reaction', '/recall'].includes(location.pathname);
+    document.body.style.overflow = shouldLockScroll ? 'hidden' : 'auto';
+    document.documentElement.style.overflow = shouldLockScroll ? 'hidden' : 'auto';
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const unlockScroll = () => {
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+    };
+    window.addEventListener('reactionQuit', unlockScroll);
+    window.addEventListener('meditationQuit', unlockScroll);
+    return () => {
+      window.removeEventListener('reactionQuit', unlockScroll);
+      window.removeEventListener('meditationQuit', unlockScroll);
+    };
+  }, []);
 
   return (
     <>
       <ScrollToSection />
 
-      {/* Floating Nav (hide on game pages) */}
       {!isGameRoute && showFloatingNav && (
         <div className="floating-nav-vertical">
           <a href="/" data-tooltip="Home"><FaHome /></a>
@@ -75,7 +88,6 @@ function AppContent() {
         </div>
       )}
 
-      {/* Main Navbar (hide on game pages) */}
       {!isGameRoute && (
         <nav>
           <div className="logo">CogniCare</div>
@@ -116,18 +128,11 @@ function AppContent() {
             </div>
           </>
         } />
-
-        {/* Existing Routes */}
         <Route path="/signup" element={<SignupStepper />} />
         <Route path="/login" element={<Login />} />
         <Route path="/meditationroom" element={<MeditationRoom />} />
         <Route path="/recall" element={<RecallGame />} />
         <Route path="/reaction" element={<ReactionGame />} />
-
-        {/* ✅ New Routes for Progress Detail Pages */}
-        <Route path="/streak-details" element={<StreakDetails />} />
-        <Route path="/trend-analysis" element={<TrendAnalysis />} />
-        <Route path="/progress-chart" element={<ProgressChartFull />} />
       </Routes>
     </>
   );

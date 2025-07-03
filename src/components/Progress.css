@@ -1,191 +1,103 @@
-/* Wrapper to position lock overlay */
-.progress-wrapper {
-  position: relative;
-  padding: 1rem;
-  min-height: 600px;
-}
-
-/* Progress Section */
+/* Main section */
 .progress-section {
-  padding: 2rem;
-  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px;
   background: linear-gradient(to bottom right, #c6b6dac4, #8677a79f);
   color: #3f1262;
-  scroll-margin-top: 100px;
-  margin-top: 80px;
-  border-radius: 14px;
-  z-index: 1;
-  position: relative;
-}
-
-/* Lock Overlay */
-.progress-lock {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(100% - 2rem);  /* Adjust if wrapper has padding */
-  height: 100%;
-  backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.35);
-  z-index: 5;
   text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  border-radius: 14px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  pointer-events: auto;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
-.progress-lock img {
-  max-width: 100px;
-  margin-bottom: 1rem;
-}
-
-/* Blur effect under lock */
-.blurred {
-  filter: blur(3px);
-  pointer-events: none;
+/* Graph container */
+.progress-box {
+  position: relative;
+  margin: auto;
+  width: 90%;
+  max-width: 1200px;
+  height: 650px;
+  background-color: rgba(180, 130, 200, 0.9);
+  border-radius: 16px;
+  box-shadow: 0px 8px 8px #42296c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 20px;
+  color: #cfc1e6;
+  font-weight: 600;
+  overflow: hidden;
 }
 
 /* Heading */
+.progress-header {
+  align-self: flex-start;
+  width: 100%;
+}
+
 .progress-header h2 {
-  font-size: 32px;
+  font-size: 47px;
   color: #7659a8;
-  text-shadow: 1px 2px 0px #4d278f;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* Layout */
-.progress-content {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.left-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.main-area {
-  flex: 1;
-}
-
-/* Cards */
-.streak-box,
-.trend-box {
-  background-color: #a68ccc;
-  padding: 20px;
-  border-radius: 12px;
-  color: #fff;
-  box-shadow: 0 6px 10px rgba(66, 30, 115, 0.3);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.streak-box:hover,
-.trend-box:hover {
-  transform: translateY(-5px);
-}
-
-.streak-count {
-  font-size: 38px;
+  margin: 25px 0 0 42px;
+  text-shadow: 1px 2px 0px #4d278fd2;
   font-weight: 700;
-  margin-top: 10px;
-  color: #fce3ff;
+  letter-spacing: 1px;
+}
+
+/* Optional background image */
+.progress-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: 0;
+  border-radius: 16px; 
+}
+
+.progress-box > *:not(.progress-image) {
+  position: relative;
+  z-index: 1;
 }
 
 /* Chart area */
-.chart-placeholder {
-  background-color: #b596d6c2;
-  padding: 30px;
-  border-radius: 14px;
+.progress-content {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 6px rgba(66, 30, 115, 0.3);
-  color: #2d1250;
-  text-align: center;
+  align-items: center;
+  padding: 0 10px;
 }
 
-.chart-placeholder h4 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.main-area {
+  width: 100%;
+  height: 90%;
 }
 
-.more-btn {
-  background-color: #5a3f91;
-  color: #f8f1fd;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 25px;
-  font-weight: bold;
-  font-size: 16px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.more-btn:hover {
-  background-color: #d393ff;
-  transform: scale(1.05);
-}
-
-/* ✅ Responsive */
-@media (max-width: 768px) {
-  .progress-content {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .progress-section {
-    padding: 1rem;
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .progress-box {
+    height: auto;
+    padding: 20px;
+    font-size: 16px;
   }
 
   .progress-header h2 {
-    font-size: 24px;
+    font-size: 32px;
+    margin-left: 16px;
+    text-align: center;
   }
 
-  .streak-box,
-  .trend-box {
-    font-size: 15px;
-    padding: 16px;
+  .main-area {
+    height: 400px;
   }
 
-  .streak-count {
-    font-size: 30px;
-  }
-
-  .chart-placeholder {
+  .progress-section {
     padding: 20px;
-  }
-
-  .chart-placeholder h4 {
-    font-size: 20px;
-  }
-
-  .more-btn {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  .progress-lock {
-    font-size: 16px;
-    padding: 1rem;
-    width: calc(100% - 2rem);
-  }
-
-  .progress-lock img {
-    max-width: 80px;
   }
 }
