@@ -1,15 +1,16 @@
 import React, { useRef } from 'react';
 import './MindPlay.css';
 import DecryptedText from './DecryptedText';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
+
 import TiltedCard from './TiltedCard';
-import recallImg from '../assets/recall.png';
-import reactionImg from '../assets/reaction.png';
+import recallImg from '../assets/recall.webp';
+import reactionImg from '../assets/reaction.webp';
 import { useNavigate } from 'react-router-dom';
 
 const MindPlay = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  //const isInView = useInView(ref, { once: true, margin: '-100px' });
   const navigate = useNavigate();
 
   return (

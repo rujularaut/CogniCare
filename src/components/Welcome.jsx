@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
-import welcomeImg from '../assets/welcome.png';
+import React from 'react';
 import './Welcome.css';
+import welcomeImg from '../assets/welcome.png';
+import { Link } from 'react-router-dom'; 
 
 const Welcome = () => (
   <section className="welcome">

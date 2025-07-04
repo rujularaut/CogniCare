@@ -1,6 +1,12 @@
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+/* Universal box-sizing for consistency */
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 /* Base styles for body */
@@ -28,7 +34,6 @@ code {
 html, body {
   max-width: 100vw;
   max-height: 100vh;
-  box-sizing: border-box;
 }
 
 /* Fullscreen iframe for embedded games like Number Recall */
@@ -40,7 +45,7 @@ iframe {
   overflow: hidden;
 }
 
-/* Optional: remove scrollbar if you want during iframe view */
+/* Optional scrollbar styling (can remove to reduce unused CSS) */
 ::-webkit-scrollbar {
   width: 8px;
 }
