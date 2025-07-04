@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relax Zone - CogniCare</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#e0c3fc, #ffffff);
+      text-align: center;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #00796B;
+    }
+
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .sound-btn {
+      aspect-ratio: 1 / 1;
+      background-color: #a678e2;
+      border: none;
+      border-radius: 12px;
+      width: 150px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, background-color 0.3s;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sound-btn:hover {
+      transform: scale(1.05);
+      background-color: #f0e6ff;
+    }
+
+    .sound-btn img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+    }
+
+    .sound-btn span {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #4b0082;
+    }
+
+    .back-btn-small {
+      position: fixed;
+      bottom: 20px;
+      left: 20px; 
+      font-size: 12px;
+      padding: 6px 12px;
+      background-color: #2c1b3c;
+      color: #fbb967;
+      border-radius: 20px;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .back-btn-small:hover {
+      opacity: 1;
+      transform: scale(1.05);
+      background-color: #3c256a;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌿 Relax Zone</h1>
+
+  <div class="button-container">
+    <a class="sound-btn" href="/rain-sound.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/414/414974.png" alt="Rain">
+      <span>Rain (Monsoon)</span>
+    </a>
+
+    <a class="sound-btn" href="/beach-sea-sound.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/920/920857.png" alt="Beach">
+      <span>Seashore</span>
+    </a>
+
+    <a class="sound-btn" href="/morning-sunshine.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Morning">
+      <span>🌞 Morning Sunshine</span>
+    </a>
+  </div>
+
+  <a href="/#calmspace-section" class="back-btn-small">← Back</a>
+</body>
+</html>

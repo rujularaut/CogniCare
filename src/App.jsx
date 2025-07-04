@@ -11,7 +11,7 @@ import Meditation from './components/Meditation';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import SignupStepper from './components/SignupStepper';
-import MeditationRoom from './components/MeditationRoom';
+
 import MindPlay from './components/MindPlay';
 
 import './App.css';
@@ -130,7 +130,6 @@ function AppContent() {
         } />
         <Route path="/signup" element={<SignupStepper />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/meditationroom" element={<MeditationRoom />} />
         <Route path="/recall" element={<RecallGame />} />
         <Route path="/reaction" element={<ReactionGame />} />
       </Routes>

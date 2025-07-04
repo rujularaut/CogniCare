@@ -2,7 +2,7 @@ import React from 'react';
 import Particles from './Particles';
 import './Meditation.css';
 import { Link } from 'react-router-dom';
-import './MeditationRoom.css';
+
 
 
 const Meditation = () => {
@@ -20,7 +20,7 @@ const Meditation = () => {
       <div className="meditation-content">
         <h2>CalmSpace</h2>
         <p>Find calm, breathe deep, and center your mind.</p>
-        <Link to="/meditationroom" className="meditate-btn">Begin Meditation</Link>
+        <a href="/relax-zone.html" className="meditate-btn">Begin Meditation</a>
       </div>
     </section>
   );

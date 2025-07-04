@@ -24,7 +24,7 @@ const Login = () => {
         localStorage.setItem('userEmail', email);
 
         // Redirect to home
-        navigate('/');
+        navigate('/#mindplay');
       } else {
         alert(data.error || 'Login failed');
       }
