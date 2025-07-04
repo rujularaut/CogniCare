@@ -21,32 +21,32 @@ export default function TiltedCard({
   showTooltip = true,
   overlayContent = null,
   displayOverlayContent = false,
-  onClick, 
+  onClick,
 }) {
   const scale = useSpring(1, springValues);
   const [isHovered, setIsHovered] = useState(false);
 
-  function handleMouseEnter() {
+  const handleMouseEnter = () => {
     scale.set(scaleOnHover);
     setIsHovered(true);
-  }
+  };
 
-  function handleMouseLeave() {
+  const handleMouseLeave = () => {
     scale.set(1);
     setIsHovered(false);
-  }
+  };
 
   return (
     <figure
-      onClick={onClick}
       className="tilted-card-figure"
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       style={{
         height: containerHeight,
         width: containerWidth,
-        cursor: 'pointer',
+        cursor: "pointer",
       }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       {showMobileWarning && (
         <div className="tilted-card-mobile-alert">
@@ -62,7 +62,7 @@ export default function TiltedCard({
           scale,
         }}
       >
-        <motion.img
+        <img
           src={imageSrc}
           alt={altText}
           className="tilted-card-img"
@@ -70,6 +70,7 @@ export default function TiltedCard({
             width: imageWidth,
             height: imageHeight,
           }}
+          loading="lazy"
         />
 
         {displayOverlayContent && overlayContent && (
@@ -80,15 +81,15 @@ export default function TiltedCard({
       </motion.div>
 
       {showTooltip && (
-        <motion.figcaption
+        <figcaption
           className="tilted-card-caption"
           style={{
             opacity: isHovered ? 1 : 0,
-            transition: "opacity 0.3s",
+            transition: "opacity 0.3s ease",
           }}
         >
           {captionText}
-        </motion.figcaption>
+        </figcaption>
       )}
     </figure>
   );
