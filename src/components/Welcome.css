@@ -1,24 +1,28 @@
 .welcome {
-  height: 70vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(to bottom right, #f8f1fd, #d2caf4);
   text-align: center;
-  padding: 10px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .welcome-content {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 220px;
+  gap: 120px;
+  flex-wrap: wrap; /* ✅ Wraps on smaller screens */
+  justify-content: center;
 }
 
 .welcome-img {
-  max-width: 520px;
+  max-width: 500px;
   width: 100%;
   height: auto;
+  flex-shrink: 0;
 }
 
 .start-btn {
@@ -31,6 +35,7 @@
   font-size: 20px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 0 20px #cab0ff;
+  display: inline-block;
 }
 
 .start-btn:hover {
@@ -39,6 +44,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
