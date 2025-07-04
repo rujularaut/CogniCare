@@ -10,9 +10,9 @@ const Meditation = () => {
     <section className="meditation-section">
       <Particles
         particleColors={['#cdd0fc', '#a9b0ff']}
-        particleCount={680}
+        particleCount={200}
         particleSpread={11}
-        speed={0.1}
+        speed={0.03}
         particleBaseSize={100}
         moveParticlesOnHover={false}
         alphaParticles={false}
@@ -20,10 +20,11 @@ const Meditation = () => {
       <div className="meditation-content">
         <h2>CalmSpace</h2>
         <p>Find calm, breathe deep, and center your mind.</p>
-        <Link to="/meditationroom" className="meditate-btn">Begin Meditation</Link>
+        <Link to="/meditation" className="meditate-btn">Begin Meditation</Link>
       </div>
     </section>
   );
 };
 
 export default Meditation;
+
