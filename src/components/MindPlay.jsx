@@ -15,22 +15,18 @@ const MindPlay = () => {
   return (
     <section className="mindplay-section" id="mindplay" ref={ref}>
       <div className="mindplay-heading">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-        >
-          {/* <DecryptedText
-            text="MINDPLAY"
-            animateOn="view"
-            revealDirection="center"
-            speed={200}
-            maxIterations={60}
-            sequential={true}
-            className="revealed"
-            encryptedClassName="encrypted"
-          /> */}
-        </motion.div>
+        <div>
+  <DecryptedText
+    text="MINDPLAY"
+    animateOn="none"
+    revealDirection="center"
+    speed={200}
+    maxIterations={60}
+    sequential={true}
+    className="revealed"
+    encryptedClassName="encrypted"
+  />
+</div>
       </div>
 
       <div className="mindplay-cards">
