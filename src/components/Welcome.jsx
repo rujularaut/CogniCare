@@ -1,6 +1,6 @@
 import React from 'react';
 import './Welcome.css';
-import welcomeImg from '../assets/welcome.png';
+import welcomeImg from '../assets/welcome.webp';
 import { Link } from 'react-router-dom'; 
 
 const Welcome = () => (
