@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Meditation.css';
-import './MeditationRoom.css';
+
 
 // Lazy load Particles
 const Particles = lazy(() => import('./Particles'));
@@ -29,7 +29,7 @@ const Meditation = () => {
       <div className="meditation-content">
         <h2>CalmSpace</h2>
         <p>Find calm, breathe deep, and center your mind.</p>
-        <Link to="/meditation" className="meditate-btn">Begin Meditation</Link>
+        <a href="/relax-zone.html" className="meditate-btn">Begin Meditation</a>
       </div>
     </section>
   );

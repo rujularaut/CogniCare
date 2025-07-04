@@ -11,7 +11,7 @@ const Meditation = lazy(() => import('./components/Meditation'));
 //const Signup = lazy(() => import('./components/Signup'));
 const Login = lazy(() => import('./components/Login'));
 const SignupStepper = lazy(() => import('./components/SignupStepper'));
-const MeditationRoom = lazy(() => import('./components/MeditationRoom'));
+
 const MindPlay = lazy(() => import('./components/MindPlay'));
 const Progress = lazy(() => import('./components/Progress'));
 const RecallGame = lazy(() => import('./components/RecallGame'));
@@ -117,7 +117,7 @@ function AppContent() {
           } />
           <Route path="/signup" element={<SignupStepper />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/meditationroom" element={<MeditationRoom />} />
+          
           <Route path="/recall" element={<RecallGame />} />
           <Route path="/reaction" element={<ReactionGame />} />
         </Routes>

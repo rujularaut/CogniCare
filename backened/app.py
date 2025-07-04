@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from db import insert_user, insert_score, check_user_credentials
+from db import insert_user, insert_score, check_user_credentials, get_connection
 
 app = Flask(__name__)
 CORS(app)
@@ -74,26 +75,57 @@ def save_score():
         print("🔥 Server Error:", str(e))  # 👈 LOG full exception
         return jsonify({"success": False, "error": f"Server error: {str(e)}"}), 500
 
-@app.route("/api/progress", methods=["POST"])
+@app.route("/api/progress", methods=["GET"])
 def get_progress():
     try:
-        data = request.get_json()
-        email = data.get("email")
-
-        if not email:
+        user_email = request.args.get("email")
+        if not user_email:
             return jsonify({"success": False, "error": "Email is required"}), 400
 
-        # Dummy/mock data; replace with real DB fetch logic if needed
-        response = {
-            "success": True,
-            "user": {"email": email},
-            "streak": 0,
-            "trendText": "You are improving steadily!"
-        }
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT
+                DATE(created_at) AS date,
+                game_name,
+                ROUND(AVG(score), 2) AS avg_score
+            FROM game_scores
+            WHERE user_email = %s
+            GROUP BY game_name, date
+            ORDER BY date ASC
+            LIMIT 14;
+        """, (user_email,))
+        rows = cursor.fetchall()
+        cursor.close()
+        conn.close()
 
-        return jsonify(response), 200
+        # Merge by date, then rename date to "Week N"
+        grouped = {}
+        week_labels = {}
+        week_count = 1
+
+        for row in rows:
+            date_str = row[0].isoformat()  # date
+            game = row[1]
+            score = row[2]
+
+            if date_str not in grouped:
+                grouped[date_str] = {"week": f"Week {week_count}"}
+                week_labels[date_str] = f"Week {week_count}"
+                week_count += 1
+
+            grouped[date_str][game] = score
+
+        # Convert to list
+        chart_data = list(grouped.values())
+
+        return jsonify({"success": True, "data": chart_data}), 200
 
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
+
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+

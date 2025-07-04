@@ -12,11 +12,10 @@ const Welcome = () => (
         className="welcome-img"
         loading="lazy" // ⬅️ Improves performance
       />
-      <Link to="/signup" className="start-btn">
-        Get Started
-      </Link>
+      <Link to="/signup" className="start-btn">Get Started</Link> {/*  */}
     </div>
   </section>
 );
 
 export default Welcome;
+
