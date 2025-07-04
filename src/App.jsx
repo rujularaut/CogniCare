@@ -1,28 +1,28 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useInView } from 'framer-motion';
-import { FaHome, FaBrain, FaSpa, FaChartBar, FaEnvelope } from 'react-icons/fa';
-
-import RecallGame from './components/RecallGame';
-import ReactionGame from './components/ReactionGame';
-import Progress from './components/Progress';
-import Welcome from './components/Welcome';
-import Meditation from './components/Meditation';
-import Signup from './components/Signup';
-import Login from './components/Login';
-import SignupStepper from './components/SignupStepper';
-
-import MindPlay from './components/MindPlay';
+import { FaHome, FaBrain, FaSpa, FaChartBar } from 'react-icons/fa';
 
 import './App.css';
+
+// Lazily loaded components (code splitting)
+const Welcome = lazy(() => import('./components/Welcome'));
+const Meditation = lazy(() => import('./components/Meditation'));
+//const Signup = lazy(() => import('./components/Signup'));
+const Login = lazy(() => import('./components/Login'));
+const SignupStepper = lazy(() => import('./components/SignupStepper'));
+
+const MindPlay = lazy(() => import('./components/MindPlay'));
+const Progress = lazy(() => import('./components/Progress'));
+const RecallGame = lazy(() => import('./components/RecallGame'));
+const ReactionGame = lazy(() => import('./components/ReactionGame'));
 
 function ScrollToSection() {
   const location = useLocation();
 
   useEffect(() => {
-    const hasHash = location.hash;
-    if (hasHash) {
-      const section = document.querySelector(hasHash);
+    if (location.hash) {
+      const section = document.querySelector(location.hash);
       if (section) {
         setTimeout(() => {
           section.scrollIntoView({ behavior: 'smooth' });
@@ -42,10 +42,10 @@ function AppContent() {
   const location = useLocation();
   const hash = location.hash;
 
-  const isProgressInView = useInView(progressRef, { amount: 0.3, once: false });
+  const isProgressInView = useInView(progressRef, { amount: 0.3 });
   const isWelcomeInView = useInView(welcomeRef, { amount: 0.6 });
-  const isMindplayInView = useInView(mindplayRef, { amount: 0.3, once: false });
-  const isCalmspaceInView = useInView(calmspaceRef, { amount: 0.3, once: false });
+  const isMindplayInView = useInView(mindplayRef, { amount: 0.3 });
+  const isCalmspaceInView = useInView(calmspaceRef, { amount: 0.3 });
 
   const isOnHomePage = location.pathname === '/';
   const isGameRoute = location.pathname === '/recall' || location.pathname === '/reaction';
@@ -84,7 +84,6 @@ function AppContent() {
           <a href="#mindplay" data-tooltip="MindPlay"><FaBrain /></a>
           <a href="#calmspace-section" data-tooltip="CalmSpace"><FaSpa /></a>
           <a href="#myprogress" data-tooltip="Progress"><FaChartBar /></a>
-         
         </div>
       )}
 
@@ -96,43 +95,33 @@ function AppContent() {
             <li><a href="#mindplay">MindPlay</a></li>
             <li><a href="#calmspace-section">CalmSpace</a></li>
             <li><a href="#myprogress">MyProgress</a></li>
-           
           </ul>
         </nav>
       )}
 
-      <Routes>
-        <Route path="/" element={
-          <>
-            {!isGameRoute && (
-              <header>
-                <h1>Welcome to CogniCare</h1>
-                <p>Your mental health companion</p>
-              </header>
-            )}
-
-            <div ref={welcomeRef}>
-              <Welcome />
-            </div>
-
-            <div ref={mindplayRef} id="mindplay">
-              <MindPlay />
-            </div>
-
-            <div ref={calmspaceRef} id="calmspace-section">
-              <Meditation />
-            </div>
-
-            <div ref={progressRef} id="myprogress">
-              <Progress />
-            </div>
-          </>
-        } />
-        <Route path="/signup" element={<SignupStepper />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/recall" element={<RecallGame />} />
-        <Route path="/reaction" element={<ReactionGame />} />
-      </Routes>
+      <Suspense fallback={<div className="loading">Loading...</div>}>
+        <Routes>
+          <Route path="/" element={
+            <>
+              {!isGameRoute && (
+                <header>
+                  <h1>Welcome to CogniCare</h1>
+                  <p>Your mental health companion</p>
+                </header>
+              )}
+              <div ref={welcomeRef}><Welcome /></div>
+              <div ref={mindplayRef} id="mindplay"><MindPlay /></div>
+              <div ref={calmspaceRef} id="calmspace-section"><Meditation /></div>
+              <div ref={progressRef} id="myprogress"><Progress /></div>
+            </>
+          } />
+          <Route path="/signup" element={<SignupStepper />} />
+          <Route path="/login" element={<Login />} />
+          
+          <Route path="/recall" element={<RecallGame />} />
+          <Route path="/reaction" element={<ReactionGame />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }

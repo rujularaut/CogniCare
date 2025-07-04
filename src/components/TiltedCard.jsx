@@ -1,7 +1,5 @@
-import './TiltedCard.css';
-
-import { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useState } from "react";
+import { motion, useSpring } from "framer-motion";
 import "./TiltedCard.css";
 
 const springValues = {
@@ -13,83 +11,43 @@ const springValues = {
 export default function TiltedCard({
   imageSrc,
   altText = "Tilted card image",
+  loading="lazy",
   captionText = "",
   containerHeight = "300px",
   containerWidth = "100%",
   imageHeight = "300px",
   imageWidth = "300px",
   scaleOnHover = 1.1,
-  rotateAmplitude = 14,
-  showMobileWarning = true,
+  showMobileWarning = false,
   showTooltip = true,
   overlayContent = null,
   displayOverlayContent = false,
-  onClick, 
+  onClick,
 }) {
-
-  const ref = useRef(null);
-
-  const x = useMotionValue();
-  const y = useMotionValue();
-  const rotateX = useSpring(useMotionValue(0), springValues);
-  const rotateY = useSpring(useMotionValue(0), springValues);
   const scale = useSpring(1, springValues);
-  const opacity = useSpring(0);
-  const rotateFigcaption = useSpring(0, {
-    stiffness: 350,
-    damping: 30,
-    mass: 1,
-  });
+  const [isHovered, setIsHovered] = useState(false);
 
-  const [lastY, setLastY] = useState(0);
-
-  function handleMouse(e) {
-    if (!ref.current) return;
-
-    const rect = ref.current.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left - rect.width / 2;
-    const offsetY = e.clientY - rect.top - rect.height / 2;
-
-    const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
-    const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
-
-    rotateX.set(rotationX);
-    rotateY.set(rotationY);
-
-    x.set(e.clientX - rect.left);
-    y.set(e.clientY - rect.top);
-
-    const velocityY = offsetY - lastY;
-    rotateFigcaption.set(-velocityY * 0.6);
-    setLastY(offsetY);
-  }
-
-  function handleMouseEnter() {
+  const handleMouseEnter = () => {
     scale.set(scaleOnHover);
-    opacity.set(1);
-  }
+    setIsHovered(true);
+  };
 
-  function handleMouseLeave() {
-    opacity.set(0);
+  const handleMouseLeave = () => {
     scale.set(1);
-    rotateX.set(0);
-    rotateY.set(0);
-    rotateFigcaption.set(0);
-  }
+    setIsHovered(false);
+  };
 
   return (
     <figure
-      ref={ref}
-      onClick={onClick}
       className="tilted-card-figure"
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       style={{
         height: containerHeight,
         width: containerWidth,
-        cursor: 'pointer',
+        cursor: "pointer",
       }}
-      onMouseMove={handleMouse}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       {showMobileWarning && (
         <div className="tilted-card-mobile-alert">
@@ -98,16 +56,14 @@ export default function TiltedCard({
       )}
 
       <motion.div
-        className="tilted-card-inner"
+        className={`tilted-card-inner ${isHovered ? "hovered" : ""}`}
         style={{
           width: imageWidth,
           height: imageHeight,
-          rotateX,
-          rotateY,
           scale,
         }}
       >
-        <motion.img
+        <img
           src={imageSrc}
           alt={altText}
           className="tilted-card-img"
@@ -115,29 +71,26 @@ export default function TiltedCard({
             width: imageWidth,
             height: imageHeight,
           }}
+          loading="lazy"
         />
 
         {displayOverlayContent && overlayContent && (
-          <motion.div
-            className="tilted-card-overlay"
-          >
+          <motion.div className="tilted-card-overlay">
             {overlayContent}
           </motion.div>
         )}
       </motion.div>
 
       {showTooltip && (
-        <motion.figcaption
+        <figcaption
           className="tilted-card-caption"
           style={{
-            x,
-            y,
-            opacity,
-            rotate: rotateFigcaption,
+            opacity: isHovered ? 1 : 0,
+            transition: "opacity 0.3s ease",
           }}
         >
           {captionText}
-        </motion.figcaption>
+        </figcaption>
       )}
     </figure>
   );

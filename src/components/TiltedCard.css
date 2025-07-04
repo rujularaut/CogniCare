@@ -5,16 +5,23 @@
   perspective: 800px;
   display: flex;
   flex-direction: column;
-  align-items: top;
+  align-items: flex-start;
   justify-content: center;
 }
 
+/* Show only on mobile */
 .tilted-card-mobile-alert {
   position: absolute;
   top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
   font-size: 0.875rem;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 6px 12px;
+  border-radius: 6px;
   display: none;
+  z-index: 5;
 }
 
 @media (max-width: 640px) {
@@ -26,29 +33,19 @@
   }
 }
 
-.tilted-card-inner {
-  position: relative;
-  transform-style: preserve-3d;
-}
-
 .tilted-card-img {
-  position: absolute;
-  top: 50;
-  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 20px;
-  will-change: transform;
-  transform: translateZ(0);
   box-shadow: 0 10px 15px #31224e;
-  
 }
 
 .tilted-card-img:hover {
   filter: brightness(1.1) saturate(1.2);
-  box-shadow: 0 0 15px #ffdca3;
-  transition: all 0.3s ease;
+  box-shadow: 0 0 20px #ffdca3;
 }
-
 
 .tilted-card-overlay {
   position: absolute;

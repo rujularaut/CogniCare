@@ -1,36 +1,33 @@
 import React, { useRef } from 'react';
 import './MindPlay.css';
 import DecryptedText from './DecryptedText';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
+
 import TiltedCard from './TiltedCard';
-import recallImg from '../assets/recall.png';
-import reactionImg from '../assets/reaction.png';
+import recallImg from '../assets/recall.webp';
+import reactionImg from '../assets/reaction.webp';
 import { useNavigate } from 'react-router-dom';
 
 const MindPlay = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  //const isInView = useInView(ref, { once: true, margin: '-100px' });
   const navigate = useNavigate();
 
   return (
     <section className="mindplay-section" id="mindplay" ref={ref}>
       <div className="mindplay-heading">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-        >
-          {/* <DecryptedText
-            text="MINDPLAY"
-            animateOn="view"
-            revealDirection="center"
-            speed={200}
-            maxIterations={60}
-            sequential={true}
-            className="revealed"
-            encryptedClassName="encrypted"
-          /> */}
-        </motion.div>
+        <div>
+  <DecryptedText
+    text="MINDPLAY"
+    animateOn="none"
+    revealDirection="center"
+    speed={200}
+    maxIterations={60}
+    sequential={true}
+    className="revealed"
+    encryptedClassName="encrypted"
+  />
+</div>
       </div>
 
       <div className="mindplay-cards">
