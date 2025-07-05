@@ -129,3 +129,43 @@
     margin-top: 14px;
   }
 }
+
+/* Chart container */
+.progress-chart-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 30px auto;
+  flex-grow: 1;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 60vh;
+  min-height: 300px;
+}
+
+/* 📱 Responsive styling */
+@media (max-width: 600px) {
+  .progress-chart-container {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .chart-wrapper {
+    height: 50vh;
+    min-height: 220px;
+  }
+
+  .recharts-legend-wrapper {
+    font-size: 12px !important;
+  }
+
+  .recharts-tooltip-wrapper {
+    font-size: 12px !important;
+  }
+}
