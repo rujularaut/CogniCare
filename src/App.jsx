@@ -1,17 +1,13 @@
-import React, { useRef, useEffect, Suspense, lazy } from 'react';
+import React, { useRef, useEffect, useState, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useInView } from 'framer-motion';
 import { FaHome, FaBrain, FaSpa, FaChartBar } from 'react-icons/fa';
-
 import './App.css';
 
-// Lazily loaded components (code splitting)
 const Welcome = lazy(() => import('./components/Welcome'));
 const Meditation = lazy(() => import('./components/Meditation'));
-//const Signup = lazy(() => import('./components/Signup'));
 const Login = lazy(() => import('./components/Login'));
 const SignupStepper = lazy(() => import('./components/SignupStepper'));
-
 const MindPlay = lazy(() => import('./components/MindPlay'));
 const Progress = lazy(() => import('./components/Progress'));
 const RecallGame = lazy(() => import('./components/RecallGame'));
@@ -35,6 +31,8 @@ function ScrollToSection() {
 }
 
 function AppContent() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const mindplayRef = useRef(null);
   const calmspaceRef = useRef(null);
   const welcomeRef = useRef(null);
@@ -90,11 +88,16 @@ function AppContent() {
       {!isGameRoute && (
         <nav>
           <div className="logo">CogniCare</div>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="#mindplay">MindPlay</a></li>
-            <li><a href="#calmspace-section">CalmSpace</a></li>
-            <li><a href="#myprogress">MyProgress</a></li>
+
+          <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+            &#9776;
+          </div>
+
+          <ul id="navLinks" className={menuOpen ? 'show' : ''}>
+            <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
+            <li><a href="#mindplay" onClick={() => setMenuOpen(false)}>MindPlay</a></li>
+            <li><a href="#calmspace-section" onClick={() => setMenuOpen(false)}>CalmSection</a></li>
+            <li><a href="#myprogress" onClick={() => setMenuOpen(false)}>My Progress</a></li>
           </ul>
         </nav>
       )}
@@ -117,7 +120,6 @@ function AppContent() {
           } />
           <Route path="/signup" element={<SignupStepper />} />
           <Route path="/login" element={<Login />} />
-          
           <Route path="/recall" element={<RecallGame />} />
           <Route path="/reaction" element={<ReactionGame />} />
         </Routes>

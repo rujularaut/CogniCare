@@ -33,13 +33,14 @@ const MindPlay = () => {
       <div className="mindplay-cards">
         <div className="card-with-text">
         <TiltedCard
+          className="tilted-card"
           imageSrc={recallImg}
           altText="Number Recall Game"
           captionText="Click to play"
           containerHeight="350px"
           containerWidth="320px"
-          imageHeight="350px"
-          imageWidth="300px"
+          //imageHeight="350px"
+          //imageWidth="300px"
           rotateAmplitude={12}
           scaleOnHover={1.1}
           showTooltip={true}
@@ -54,13 +55,14 @@ const MindPlay = () => {
 
   <div className="card-with-text">
         <TiltedCard
+          className="tilted-card"
           imageSrc={reactionImg}
           altText="Reaction Game"
           captionText="Click to play"
           containerHeight="350px"
           containerWidth="320px"
-          imageHeight="350px"
-          imageWidth="300px"
+          //imageHeight="350px"
+          //imageWidth="300px"
           rotateAmplitude={12}
           scaleOnHover={1.1}
           showTooltip={true}

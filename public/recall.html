@@ -8,20 +8,23 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      background-color: #f2e6ff;
+      background-color: #e6d8f9;
       color: #333;
       margin: 0;
       padding: 20px;
     }
 
     .grid {
-      display: grid;
-      gap: 6px;
-      justify-content: center;
-      margin: 20px auto;
-      width: 90vw;
-      max-width: 400px;
-    }
+  display: grid;
+  gap: 6px;
+  justify-content: center;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 400px;
+  padding: 0 10px; /* Prevents edge overflow */
+  box-sizing: border-box;
+}
+
 
     .cell {
       aspect-ratio: 1 / 1;
@@ -38,7 +41,7 @@
 
     .cell:hover {
       transform: scale(1.05);
-      background-color: #f0e6ff;
+      background-color: #f1c977;
     }
 
     .hidden {
@@ -69,14 +72,14 @@
       margin: 10px auto;
       height: 20px;
       width: 80%;
-      background-color: #a678e2;
+      background-color: #8e5dcdd3;
       border-radius: 10px;
       overflow: hidden;
     }
 
     .score-fill {
       height: 100%;
-      background-color: #6a1b9a;
+      background-color: #7b4cb9;
       width: 0%;
       transition: width 0.3s ease;
     }
@@ -98,7 +101,7 @@
       display: none;
       position: absolute;
       right: 0;
-      background-color: #7367f0;
+      background-color: #7158b0;
       min-width: 120px;
       box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1;
@@ -113,7 +116,7 @@
       text-align: left;
       cursor: pointer;
       width: 100%;
-      border-bottom: 1px solid #a3bffa;
+      border-bottom: 1px solid #cec1ff;
     }
 
     .dropdown-content button:hover {
@@ -142,25 +145,70 @@
     #startButton {
       font-size: 20px;
       margin-top: 20px;
-      background-color: #7367f0;
+      background-color: #655dbe;
       padding: 10px 20px;
       border-radius: 8px;
       cursor: pointer;
       color: white;
       border: none;
     }
+ 
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .info {
+    font-size: 16px;
+  }
+
+  .cell {
+    font-size: clamp(16px, 5vw, 28px);
+  }
+
+  #startOverlay h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  #startOverlay p {
+    font-size: 14px;
+    padding: 0 12px;
+  }
+
+  #startButton {
+    font-size: 16px;
+    padding: 10px 18px;
+  }
+
+  .dropdown-content {
+    min-width: 100px;
+  }
+
+  .dropdown-content button {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+
   </style>
 </head>
 
 <body>
   <div id="startOverlay">
-    <h2>🧠 How to Play</h2>
+    <h2> How to Play</h2>
     <p>Remember the order of numbers shown briefly and then tap them in the same order.</p>
     <p>Choose the numbers in increasing order.</p>
     <button id="startButton">Start Game</button>
   </div>
 
-  <h1>🧠 Number Recall Game</h1>
+  <h1> Number Recall Game</h1>
   <div class="info">Level: <span id="level">1</span> | Score: <span id="score">0</span></div>
   <div class="score-bar">
     <div id="scoreFill" class="score-fill"></div>

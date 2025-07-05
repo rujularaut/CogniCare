@@ -1,10 +1,35 @@
 .signup-container {
-background: linear-gradient(to bottom right,  #ecdffd);
+  background: linear-gradient(to bottom right, #ecdffd);
   color: #513c7a;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px; /* For safe spacing on small screens */
+  box-sizing: border-box;
+}
+
+.signup-box {
+  background-color: #9a81b9;
+  padding: 32px;
+  border-radius: 28px;
+  box-shadow: 0 0 16px #a088c9;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+.final-welcome-heading {
+  font-size: 35px;
+  color: #5a4386;
+  text-shadow: 0 0 8px #7f64b0;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0 0 10px 0;
 }
 
 input {
@@ -16,21 +41,41 @@ input {
   font-size: 16px;
   background-color: #5a4386;
   color: #d7cbf9;
+  box-sizing: border-box;
 }
 
 input::placeholder {
   color: #d7cbf9;
 }
 
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #513c7a;
+  color: #f5eaff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0 10px #5c4883;
+}
+
+button:hover {
+  background-color: #e09d49;
+  transform: scale(1.05);
+}
+
 .final-login-text {
   margin-top: 0.5rem;
-  color: #e9e0fb; 
+  color: #e9e0fb;
   font-size: 14.5px;
-  text-align: left;
+  text-align: center;
 }
 
 .final-login-text a {
-  color: #fbb967; 
+  color: #fbb967;
   text-decoration: none;
   font-weight: 500;
 }
@@ -40,13 +85,24 @@ input::placeholder {
   color: #ffdca3;
 }
 
-.final-welcome-heading {
-  font-size: 35px;              
-  color: #5a4386;
-  text-shadow: 0 0 8px #7f64b0;
-  font-weight: bold;
-  text-align: center;
-  line-height: 1.4;             
-  margin-top: 0px;
-}
+/* 📱 Responsive Tweaks */
+@media (max-width: 480px) {
+  .signup-box {
+    padding: 24px;
+    border-radius: 24px;
+  }
 
+  .final-welcome-heading {
+    font-size: 26px;
+  }
+
+  input,
+  button {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .final-login-text {
+    font-size: 13px;
+  }
+}

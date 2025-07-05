@@ -1,3 +1,5 @@
+/* === Base Styles Remain Unchanged === */
+
 body {
   margin: 0;
   padding: 0;
@@ -14,6 +16,7 @@ nav {
   align-items: center;
   padding: 10px 30px;
   box-shadow: 0 0 15px #a9b0ff20;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -29,6 +32,7 @@ nav ul {
   gap: 24px;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 nav ul li a {
@@ -120,4 +124,77 @@ p {
 
 .floating-nav-vertical a:hover::after {
   opacity: 1;
+}
+
+/* === ✅ Mobile Responsiveness === */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .floating-nav-vertical {
+    display: none;
+  }
+}
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #d6d8ff;
+}
+
+/* Make nav responsive */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+  }
 }

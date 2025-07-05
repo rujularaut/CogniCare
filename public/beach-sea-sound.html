@@ -13,28 +13,36 @@
       overflow: hidden;
     }
 
-    .video-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: 1;
-      opacity: 0.8;
-    }
+    body {
+  background: linear-gradient(to bottom right, #2a292f, #1b2935); 
+  margin: 0;
+  padding: 0;
+}
+
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Show whole video */
+  z-index: 1;
+  opacity: 0.85;
+  background-color: #000; /* fallback fill behind video */
+}
 
     .content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding-top: 60px;
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-    }
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: right;
+  padding-top: 45px; /* ← previously was -30px, which isn't valid */
+  color: #ffffffb8;
+}
 
     .controls {
-      margin-top: 30px;
+      margin-top: -50px;
     }
 
     .controls select,
@@ -43,8 +51,8 @@
       padding: 10px 15px;
       border: none;
       border-radius: 6px;
-      background-color: white;
-      color: #006064;
+      background-color: rgba(238, 243, 245, 0.311);
+      color: #888d95a6;
       font-weight: bold;
       font-size: 1em;
       cursor: pointer;
@@ -56,7 +64,7 @@
       left: 20px; 
       font-size: 12px;
       padding: 6px 12px;
-      background-color: #2c1b3c;
+      background-color: #737b8d3b;
       color: #fbb967;
       border-radius: 20px;
       text-decoration: none;
@@ -68,17 +76,18 @@
     .back-btn-small:hover {
       opacity: 1;
       transform: scale(1.05);
-      background-color: #3c256a;
+      background-color: #d6e9ff48;
     }
+    
   </style>
 </head>
 <body>
   <video id="bgVideo" class="video-bg" muted loop playsinline>
-    <source src="https://videos.pexels.com/video-files/1720219/1720219-uhd_2560_1440_25fps.mp4" type="video/mp4">
+    <source src="assets/beach.mp4" type="video/mp4">
   </video>
 
   <div class="content">
-    <h1>🌊 Seashore</h1>
+   <!-- <h1>Seashore</h1> -->
     <div class="controls">
       <label for="timer">Set Timer (minutes):</label>
       <select id="timer">

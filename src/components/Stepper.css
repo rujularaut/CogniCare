@@ -59,7 +59,9 @@
 .footer-nav {
   margin-top: 2.5rem;
   display: flex;
+  gap: 20px;
 }
+
 
 .footer-nav.spread {
   justify-content: space-between;
@@ -180,3 +182,54 @@
   color: #e8e2f9;
 }
 
+
+/* 📱 Mobile Tweaks */
+@media (max-width: 480px) {
+  .outer-container {
+    padding: 0.5rem;
+  }
+
+  .step-indicator-row {
+    padding: 2rem 1rem 3rem;
+    flex-wrap: wrap;
+    gap: 0.01rem;
+    margin-top: 5px;
+  }
+
+  .step-circle-container {
+    border-radius: 1.2rem;
+  }
+
+  .step-default {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .footer-container {
+    padding: 1rem;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 0.75rem; /* 📏 Add vertical spacing between buttons */
+    align-items: center;
+  }
+
+  .back-button,
+  .next-button {
+    font-size: 13px;
+    padding: 0.4rem 0.9rem;
+    width: 130px; /* ✅ Makes them consistently sized */
+  }
+
+  .step-indicator-inner {
+    height: 1.75rem;
+    width: 1.75rem;
+    font-size: 0.75rem;
+  }
+
+  .check-icon {
+    height: 1.15rem;
+    width: 1.15rem;
+  }
+}

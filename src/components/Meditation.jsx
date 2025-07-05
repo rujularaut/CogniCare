@@ -17,7 +17,7 @@ const Meditation = () => {
         <Suspense fallback={null}>
           <Particles
             particleColors={['#cdd0fc', '#a9b0ff']}
-            particleCount={200}
+            particleCount={250}
             particleSpread={11}
             speed={0.03}
             particleBaseSize={100}

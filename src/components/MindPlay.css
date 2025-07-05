@@ -19,10 +19,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 80px;
+  gap: 60px;
   flex-wrap: wrap;
-  min-height: 70vh;
+  padding: 0 10px;
+  overflow: hidden;       /* 🔒 Prevent any edge spill */
 }
+
 
 .vertical-decrypt {
   writing-mode: vertical-rl;
@@ -30,17 +32,32 @@
   font-family: 'Anton', sans-serif;
   font-size: 50px;
   font-weight: 900;
-  letter-spacing: 0px;
-  line-height: 1.2;
   color: #412e69;
   text-shadow: 0 0 15px #d2c7ec;
-  cursor: pointer;
   display: flex;
-  align-items:center;
-  justify-content:center;
-  height: 80vh;
-  padding: 0px 10px;
-  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+  padding: 0 10px;
+  margin: 0 auto;         /* Centered */
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  word-break: break-word;
+  line-height: 1.1;
+  position: relative;     /* Allows precise tweaking */
+  top: -10px;             /* Push it up slightly */
+}
+
+/* ✅ Mobile fix */
+@media (max-width: 768px) {
+  .vertical-decrypt {
+    font-size: 36px;
+    height: auto;
+    padding: 0;
+    margin-left: -20px;
+    top: -20px;          /* Push up slightly more */
+  }
 }
 
 .mindplay-cards {
@@ -50,7 +67,6 @@
   justify-content: center;
   align-items: flex-start;
 }
-
 
 .revealed {
   font-size: 120px;
@@ -96,4 +112,27 @@
   padding: 10px 14px;
   border-radius: 12px;
   box-shadow: 0 8px 0px rgba(38, 10, 67, 0.2);
+}
+
+/* Responsive adjustments for big titles */
+@media (max-width: 768px) {
+  .revealed,
+  .encrypted {
+    font-size: 45px;
+    letter-spacing: 47px;
+    margin-left: -45px;
+  }
+
+  .mindplay-cards {
+    gap: 60px;
+  }
+
+  .card-with-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  text-align: center;
+}
+
 }

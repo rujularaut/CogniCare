@@ -48,3 +48,9 @@
   transform: scale(1.05);
   text-decoration: none;  
 }
+
+@media (max-width: 480px) {
+  .meditation-content p {
+    font-size: 13px;
+  }
+}

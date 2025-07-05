@@ -1,24 +1,27 @@
 .login-container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f8f1fd;
   color: #f8f1fd;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .login-box {
   background-color: #2b1a40;
-  padding: 40px;
+  padding: 32px;
   border-radius: 16px;
   box-shadow: 0 0 20px #7e4fd1;
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   text-align: center;
 }
 
 .login-box h2 {
-  margin-bottom: 24px;
-  font-size: 26px;
+  margin-bottom: 20px;
+  font-size: 24px;
   color: #cab0ff;
   text-shadow: 0 0 6px #a685f2;
 }
@@ -26,13 +29,13 @@
 .login-box form input {
   display: block;
   width: 100%;
-  padding: 12px;
-  margin: 12px 0;
+  padding: 10px;
+  margin: 10px 0;
   border: none;
   border-radius: 8px;
   background-color: #3a2857;
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .login-box form input::placeholder {
@@ -41,12 +44,12 @@
 
 .login-box form button {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   background-color: #7e4fd1;
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 0 10px #7e4fd1;
@@ -59,14 +62,39 @@
 }
 
 .signup-link {
-  margin-top: 16px;
-  font-size: 14px;
+  margin-top: 14px;
+  font-size: 13px;
   color: #cab0ff;
 }
+
 .signup-link a {
   color: #fbb967;
   text-decoration: none;
 }
+
 .signup-link a:hover {
   text-decoration: underline;
 }
+
+/* 📱 Mobile Responsive Tweaks */
+@media (max-width: 480px) {
+  .login-box {
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .login-box h2 {
+    font-size: 20px;
+  }
+
+  .login-box form input,
+  .login-box form button {
+    padding: 9px;
+    font-size: 13px;
+  }
+
+  .signup-link {
+    font-size: 12px;
+  }
+}
+

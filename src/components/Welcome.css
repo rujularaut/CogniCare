@@ -43,3 +43,21 @@
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Existing styles remain unchanged above this */
+
+@media (max-width: 768px) {
+  .welcome-content {
+    flex-direction: column; /* Stack image and button */
+    gap: 40px;
+  }
+
+  .welcome-img {
+    max-width: 90vw; /* Image shrinks */
+  }
+
+  .start-btn {
+    font-size: 16px;
+    padding: 12px 30px;
+  }
+}

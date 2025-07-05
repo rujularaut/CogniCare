@@ -2,8 +2,8 @@
 .progress-section {
   min-height: 100vh;
   padding: 40px 20px;
-  background: linear-gradient(to bottom right, #c6b6dac4, #8677a79f);
-  color: #3f1262;
+  background: linear-gradient(to bottom right, #a790c8, #4c3968); /* Matches other sections */
+  color: #e1c3f8;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -19,15 +19,15 @@
   width: 90%;
   max-width: 1200px;
   height: 650px;
-  background-color: rgba(180, 130, 200, 0.9);
+  background-color: rgba(81, 60, 122, 0.9); /* Deep purple, matching meditation section */
   border-radius: 16px;
-  box-shadow: 0px 8px 8px #42296c;
+  box-shadow: 0px 8px 16px #2a193f;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   font-size: 20px;
-  color: #cfc1e6;
+  color: #dfd9f2;
   font-weight: 600;
   overflow: hidden;
 }
@@ -40,9 +40,9 @@
 
 .progress-header h2 {
   font-size: 47px;
-  color: #7659a8;
+  color: #cabdf4;
   margin: 25px 0 0 42px;
-  text-shadow: 1px 2px 0px #4d278fd2;
+  text-shadow: 1px 2px 0px #3e2c60;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -57,6 +57,7 @@
   object-fit: cover; 
   z-index: 0;
   border-radius: 16px; 
+  opacity: 0.08; /* faded so it doesn't clash */
 }
 
 .progress-box > *:not(.progress-image) {
@@ -89,7 +90,7 @@
 
   .progress-header h2 {
     font-size: 32px;
-    margin-left: 16px;
+    margin-left: 0;
     text-align: center;
   }
 
