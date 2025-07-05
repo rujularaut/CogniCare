@@ -92,14 +92,14 @@ def get_progress():
             FROM game_scores
             WHERE user_email = %s
             GROUP BY game_name, date
-            ORDER BY date ASC
-            LIMIT 14;
+            ORDER BY date ASC;
         """, (user_email,))
+
         rows = cursor.fetchall()
         cursor.close()
         conn.close()
 
-        # Merge by date, then rename date to "Week N"
+        # Group scores by date (week)
         grouped = {}
         week_labels = {}
         week_count = 1
@@ -119,10 +119,32 @@ def get_progress():
         # Convert to list
         chart_data = list(grouped.values())
 
-        return jsonify({"success": True, "data": chart_data}), 200
+        # Calculate trend: compare last 2 weeks
+        trendText = "Not enough data to evaluate."
+
+        if len(chart_data) >= 2:
+            prev_week = chart_data[-2]
+            curr_week = chart_data[-1]
+
+            prev_total = sum(score for key, score in prev_week.items() if key != "week")
+            curr_total = sum(score for key, score in curr_week.items() if key != "week")
+
+            if curr_total > prev_total:
+                trendText = "✅ You are improving perfectly!"
+            elif curr_total < prev_total:
+                trendText = "⚠️ You need improvement!"
+            else:
+                trendText = "➖ Your performance is consistent."
+
+        return jsonify({
+            "success": True,
+            "data": chart_data,
+            "trendText": trendText
+        }), 200
 
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
+
 
 
 

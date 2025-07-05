@@ -2,7 +2,7 @@
 .progress-section {
   min-height: 100vh;
   padding: 40px 20px;
-  background: linear-gradient(to bottom right, #a790c8, #4c3968); /* Matches other sections */
+  background: linear-gradient(to bottom right, #a790c8, #4c3968);
   color: #e1c3f8;
   text-align: center;
   display: flex;
@@ -16,10 +16,10 @@
 .progress-box {
   position: relative;
   margin: auto;
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
-  height: 650px;
-  background-color: rgba(81, 60, 122, 0.9); /* Deep purple, matching meditation section */
+  min-height: 700px; /* Allow to grow as needed */
+  background-color: rgba(81, 60, 122, 0.9);
   border-radius: 16px;
   box-shadow: 0px 8px 16px #2a193f;
   display: flex;
@@ -30,6 +30,7 @@
   color: #dfd9f2;
   font-weight: 600;
   overflow: hidden;
+  padding-bottom: 30px; /* ensures space for trend message */
 }
 
 /* Heading */
@@ -57,7 +58,7 @@
   object-fit: cover; 
   z-index: 0;
   border-radius: 16px; 
-  opacity: 0.08; /* faded so it doesn't clash */
+  opacity: 0.08;
 }
 
 .progress-box > *:not(.progress-image) {
@@ -77,13 +78,33 @@
 
 .main-area {
   width: 100%;
-  height: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Responsive for mobile */
+/* 📊 Trend Message */
+.trend-message {
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(40, 30, 65, 0.85);
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: fit-content;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* 📱 Responsive for mobile */
 @media (max-width: 600px) {
   .progress-box {
-    height: auto;
+    min-height: auto;
     padding: 20px;
     font-size: 16px;
   }
@@ -95,10 +116,16 @@
   }
 
   .main-area {
-    height: 400px;
+    height: auto;
   }
 
   .progress-section {
     padding: 20px;
+  }
+
+  .trend-message {
+    font-size: 15px;
+    padding: 10px 14px;
+    margin-top: 14px;
   }
 }
