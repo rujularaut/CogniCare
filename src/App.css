@@ -163,17 +163,20 @@ p {
   cursor: pointer;
   color: #d6d8ff;
 }
-
-/* Make nav responsive */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
     align-items: flex-start;
     padding: 10px 20px;
+    position: relative;
   }
 
   .hamburger {
     display: block;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    cursor: pointer;
   }
 
   nav ul {
@@ -181,7 +184,7 @@ p {
     width: 100%;
     display: none;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 50px; /* Adjust for hamburger height */
   }
 
   nav ul.show {
@@ -197,14 +200,4 @@ p {
     width: 100%;
     padding: 10px 0;
   }
-}
-
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  box-sizing: border-box;
-}
-*, *::before, *::after {
-  box-sizing: inherit;
 }
